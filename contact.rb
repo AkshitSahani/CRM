@@ -46,14 +46,6 @@ class Contact
   def update(attribute, value)
     # puts "Please enter the id of the contact you want to update?"
     # user_id_input = gets.to_i
-    # puts "What attribute would you like to change?
-    # first_name
-    # last_name
-    # email
-    # note"
-    # user_att_input = gets.chomp.to_s
-    # puts "Please enter a new value for the #{user_att_input}"
-    # user_repl_input = gets.chomp.to_s
     @attribute = attribute
     @value = value
 
@@ -76,10 +68,6 @@ class Contact
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(attribute, value)
-    # puts "What attribute do you want to search by?"
-    # user_att_input = gets.chomp.to_s
-    # puts "Enter the #{user_att_input}"
-    # user_entered_value = gets.chomp.to_s
     @attribute = attribute
     @value = value
     @@contacts.each do |contact|
