@@ -61,7 +61,15 @@ class CRM
       puts "Is this the contact you want to modify? Enter yes or no"
       user_input = gets.chomp.to_s
       if user_input == "yes"
-        contact.update
+        puts "What attribute would you like to change?
+        first_name
+        last_name
+        email
+        note"
+        attribute = gets.chomp.to_s
+        puts "Please enter a new value for the #{attribute}"
+        value = gets.chomp.to_s
+        contact.update(attribute, value)
         puts "The contact has successfully been modified"
         puts "First name: #{contact.first_name}    Last name: #{contact.last_name}    Email: #{contact.email}    Note: #{contact.note}"
       end
@@ -105,7 +113,11 @@ class CRM
   end
 
   def search_by_attribute
-    a = Contact.find_by
+    puts "What attribute do you want to search by?"
+    attribute = gets.chomp.to_s
+    puts "Enter the #{attribute}"
+    value = gets.chomp.to_s
+    a = Contact.find_by(attribute, value)
     puts "FULL NAME: #{a.full_name}    EMAIL: #{a.email}    ID: #{a.id}    NOTE: #{a.note}"
   end
 
