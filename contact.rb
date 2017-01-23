@@ -43,60 +43,63 @@ class Contact
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
 
-  def update
-    puts "Please enter the id of the contact you want to update?"
-    user_id_input = gets.to_i
-    puts "What attribute would you like to change?
-    first_name
-    last_name
-    email
-    note"
-    user_att_input = gets.chomp.to_s
-    puts "Please enter a new value for the #{user_att_input}"
-    user_repl_input = gets.chomp.to_s
+  def update(attribute, value)
+    # puts "Please enter the id of the contact you want to update?"
+    # user_id_input = gets.to_i
+    # puts "What attribute would you like to change?
+    # first_name
+    # last_name
+    # email
+    # note"
+    # user_att_input = gets.chomp.to_s
+    # puts "Please enter a new value for the #{user_att_input}"
+    # user_repl_input = gets.chomp.to_s
+    @attribute = attribute
+    @value = value
 
     @@contacts.each do |contact|
-      if contact.id == user_id_input
-        if user_att_input == "first_name"
-          contact.first_name = user_repl_input
-        elsif user_att_input == "last_name"
-          contact.last_name = user_repl_input
-        elsif user_att_input == "email"
-          contact.email = user_repl_input
-        elsif user_att_input == "note"
-          contact.note = user_repl_input
+      # if contact.id == user_id_input
+        if attribute == "first_name"
+          contact.first_name = value
+        elsif attribute == "last_name"
+          contact.last_name = value
+        elsif attribute == "email"
+          contact.email = value
+        elsif attribute == "note"
+          contact.note = value
         end
       end
-    end
   end
 
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
-  def self.find_by
-    puts "What attribute do you want to search by?"
-    user_att_input = gets.chomp.to_s
-    puts "Enter the #{user_att_input}"
-    user_entered_value = gets.chomp.to_s
+  def self.find_by(attribute, value)
+    # puts "What attribute do you want to search by?"
+    # user_att_input = gets.chomp.to_s
+    # puts "Enter the #{user_att_input}"
+    # user_entered_value = gets.chomp.to_s
+    @attribute = attribute
+    @value = value
     @@contacts.each do |contact|
-      if user_att_input == "first_name"
-        if contact.first_name == user_entered_value
+      if attribute == "first_name"
+        if contact.first_name == value
         return contact
         end
-      elsif user_att_input == "last_name"
-        if contact.last_name == user_entered_value
+      elsif attribute == "last_name"
+        if contact.last_name == value
         return contact
         end
-      elsif user_att_input == "email"
-        if contact.email == user_entered_value
+      elsif attribute == "email"
+        if contact.email == value
         return contact
         end
-      elsif user_att_input == "note"
-        if contact.note == user_entered_value
+      elsif attribute == "note"
+        if contact.note == value
         return contact
         end
-      elsif user_att_input == "id"
+      elsif attribute == "id"
         return "Sorry, cannot select by id"
       else
         return "Contact with that attribute and value doesn't exist"
